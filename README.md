@@ -4,10 +4,33 @@
 
 색상, 타이포그래피, 크기, 여백, 모서리, 테두리, 그림자, 모션, 포커스 링을 **Light / Dark 모드별로** 조정하면 27종의 컴포넌트에 즉시 반영되고, 버튼 한 번으로 디자이너(Figma)와 개발자(npm, CSS)가 바로 쓸 수 있는 결과물을 만들어 줍니다.
 
+### 🚀 라이브 데모: **[design-system-builder-eight.vercel.app](https://design-system-builder-eight.vercel.app)**
+
+설치 없이 브라우저에서 바로 토큰을 바꿔 보고, 결과물을 Export할 수 있습니다.
+
+![Design System Builder: 사이드바의 Settings와 Components, Button 컴포넌트 갤러리](docs/images/overview.png)
+
+---
+
+## 스크린샷
+
+| 토큰 편집: Color | 토큰 편집: Text (타입 스케일) |
+| --- | --- |
+| ![Color 설정 모달: Brand, Status, Neutral 색상과 Light/Dark 토글](docs/images/settings-color.png) | ![Text 설정 모달: 기본 크기, 스케일 비율, 굵기와 타입 스케일 미리보기](docs/images/settings-text.png) |
+
+| Dark 모드: Card | Dark 모드: Table / Pagination |
+| --- | --- |
+| ![Dark 모드로 렌더링된 Card 컴포넌트와 로그인 카드 예시](docs/images/dark-card.png) | ![Dark 모드로 렌더링된 Table과 Pagination, 상태 Badge](docs/images/dark-table.png) |
+
+| Forms: Form Field | Export |
+| --- | --- |
+| ![Form Field: 라벨, 도움말, 오류 메시지와 Select, Combobox, Date Picker](docs/images/forms.png) | ![Export 모달: Figma, HTML/CSS, JSON npm 패키지 세 가지 선택지](docs/images/export.png) |
+
 ---
 
 ## 목차
 
+- [스크린샷](#스크린샷)
 - [주요 기능](#주요-기능)
 - [빠른 시작](#빠른-시작)
 - [사용 방법](#사용-방법)
@@ -44,6 +67,8 @@
 ---
 
 ## 빠른 시작
+
+> 설치 없이 써 보려면 [라이브 데모](https://design-system-builder-eight.vercel.app)를 여세요. 아래는 로컬에서 실행하거나 개발할 때의 방법입니다.
 
 ### 요구 사항
 
