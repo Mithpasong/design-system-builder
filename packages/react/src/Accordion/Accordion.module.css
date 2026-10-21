@@ -1,0 +1,106 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  color: var(--dt-text, #18181b);
+}
+
+/* ---------- variant ---------- */
+.contained {
+  overflow: hidden;
+  border: var(--dt-border-width-sm, 1px) solid var(--dt-border, #e4e4e7);
+  border-radius: var(--dt-radius-lg, 12px);
+  background: var(--dt-surface, #ffffff);
+}
+
+.contained .item + .item {
+  border-top: var(--dt-border-width-sm, 1px) solid var(--dt-border, #e4e4e7);
+}
+
+.separated {
+  gap: var(--dt-space-sm, 8px);
+}
+
+.separated .item {
+  border: var(--dt-border-width-sm, 1px) solid var(--dt-border, #e4e4e7);
+  border-radius: var(--dt-radius-md, 8px);
+  background: var(--dt-surface, #ffffff);
+}
+
+/* ---------- parts ---------- */
+.heading {
+  margin: 0;
+  font: inherit;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--dt-space-md, 12px);
+  width: 100%;
+  padding: var(--dt-space-lg, 16px) var(--dt-space-xl, 24px);
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  font: inherit;
+  font-size: var(--dt-font-size-md, 14px);
+  line-height: var(--dt-line-height-md, 21px);
+  font-weight: var(--dt-font-weight-semibold, 600);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.trigger:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--dt-text, #18181b) 4%, transparent);
+}
+
+.trigger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.trigger:focus-visible {
+  outline: var(--dt-focus-ring-width, 2px) solid var(--dt-focus-ring-color, #3b82f6);
+  outline-offset: calc(var(--dt-focus-ring-width, 2px) * -1);
+}
+
+.title {
+  flex: 1;
+}
+
+.chevron {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  fill: none;
+  stroke: var(--dt-text-muted, #71717a);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--dt-duration-normal, 200ms) var(--dt-easing, ease);
+}
+
+.expanded .chevron {
+  transform: rotate(180deg);
+}
+
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--dt-duration-normal, 200ms) var(--dt-easing, ease);
+}
+
+.expanded .panel {
+  grid-template-rows: 1fr;
+}
+
+.panelInner {
+  overflow: hidden;
+}
+
+.content {
+  padding: 0 var(--dt-space-xl, 24px) var(--dt-space-lg, 16px);
+  font-size: var(--dt-font-size-md, 14px);
+  line-height: var(--dt-line-height-md, 21px);
+  color: var(--dt-text-muted, #71717a);
+}

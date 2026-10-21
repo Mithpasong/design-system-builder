@@ -1,0 +1,92 @@
+/* ---------- progress ---------- */
+.track {
+  --_c: var(--dt-primary, #000000);
+
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--dt-radius-full, 9999px);
+  background: color-mix(in srgb, var(--dt-text, #18181b) 10%, transparent);
+}
+
+.sm {
+  height: 4px;
+}
+
+.md {
+  height: 8px;
+}
+
+.lg {
+  height: 12px;
+}
+
+.bar {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--_c);
+  transition: width var(--dt-duration-slow, 300ms) var(--dt-easing, ease);
+}
+
+.indeterminate .bar {
+  position: absolute;
+  width: 40%;
+  animation: progress-slide 1.4s ease-in-out infinite;
+}
+
+@keyframes progress-slide {
+  from {
+    left: -40%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+/* ---------- spinner ---------- */
+.spinner {
+  display: inline-block;
+  flex-shrink: 0;
+  width: var(--_size);
+  height: var(--_size);
+  border: var(--_stroke) solid color-mix(in srgb, currentColor 20%, transparent);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.colored {
+  color: var(--_c);
+}
+
+.spinner-sm {
+  --_size: 16px;
+  --_stroke: 2px;
+}
+
+.spinner-md {
+  --_size: 24px;
+  --_stroke: 2.5px;
+}
+
+.spinner-lg {
+  --_size: 36px;
+  --_stroke: 3px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loading indicators keep moving, but slower, when the user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 1.5s;
+  }
+
+  .indeterminate .bar {
+    animation-duration: 3s;
+  }
+}

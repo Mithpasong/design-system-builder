@@ -1,0 +1,118 @@
+/* ---------- tooltip ---------- */
+.root {
+  --_gap: 8px;
+  --_shift: 4px;
+
+  position: relative;
+  display: inline-flex;
+}
+
+.tip {
+  position: absolute;
+  z-index: 50;
+  padding: var(--dt-space-xs, 4px) var(--dt-space-sm, 8px);
+  border-radius: var(--dt-radius-sm, 4px);
+  background: var(--dt-text, #18181b);
+  color: var(--dt-background, #ffffff);
+  box-shadow: var(--dt-shadow-md, 0 4px 8px rgb(0 0 0 / 0.12));
+  font-size: var(--dt-font-size-sm, 12px);
+  line-height: var(--dt-line-height-sm, 18px);
+  font-weight: var(--dt-font-weight-medium, 500);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(var(--_x, 0), var(--_y, 0));
+  transition-property: opacity, transform;
+  transition-duration: var(--dt-duration-fast, 100ms);
+  transition-timing-function: var(--dt-easing, ease);
+}
+
+/* Short delay on hover so tips don't flash while the pointer passes by; none for keyboard focus */
+.root:hover .tip {
+  transition-delay: 150ms;
+}
+
+.root:hover .tip,
+.root:focus-within .tip,
+.open .tip {
+  opacity: 1;
+  --_shift: 0px;
+}
+
+.top .tip {
+  bottom: calc(100% + var(--_gap));
+  left: 50%;
+  --_x: -50%;
+  --_y: var(--_shift);
+}
+
+.bottom .tip {
+  top: calc(100% + var(--_gap));
+  left: 50%;
+  --_x: -50%;
+  --_y: calc(var(--_shift) * -1);
+}
+
+.left .tip {
+  right: calc(100% + var(--_gap));
+  top: 50%;
+  --_x: var(--_shift);
+  --_y: -50%;
+}
+
+.right .tip {
+  left: calc(100% + var(--_gap));
+  top: 50%;
+  --_x: calc(var(--_shift) * -1);
+  --_y: -50%;
+}
+
+/* ---------- popover ---------- */
+.popoverRoot {
+  position: relative;
+  display: inline-flex;
+}
+
+.popover {
+  position: absolute;
+  z-index: 50;
+  min-width: 220px;
+  padding: var(--dt-space-lg, 16px);
+  border: var(--dt-border-width-sm, 1px) solid var(--dt-border, #e4e4e7);
+  border-radius: var(--dt-radius-lg, 12px);
+  background: var(--dt-surface, #ffffff);
+  color: var(--dt-text, #18181b);
+  box-shadow: var(--dt-shadow-lg, 0 8px 24px rgb(0 0 0 / 0.12));
+  font-size: var(--dt-font-size-md, 14px);
+  line-height: var(--dt-line-height-md, 21px);
+  animation: popover-in var(--dt-duration-normal, 200ms) var(--dt-easing, ease);
+}
+
+@keyframes popover-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--_from, -4px));
+  }
+}
+
+.popover-bottom {
+  top: calc(100% + 8px);
+}
+
+.popover-top {
+  bottom: calc(100% + 8px);
+  --_from: 4px;
+}
+
+.align-start {
+  left: 0;
+}
+
+.align-end {
+  right: 0;
+}
+
+.align-center {
+  left: 50%;
+  translate: -50% 0;
+}

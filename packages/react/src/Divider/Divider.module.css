@@ -1,0 +1,39 @@
+.divider {
+  flex-shrink: 0;
+  background: var(--dt-border, #e4e4e7);
+}
+
+.horizontal {
+  width: 100%;
+  height: var(--dt-border-width-sm, 1px);
+}
+
+.vertical {
+  align-self: stretch;
+  width: var(--dt-border-width-sm, 1px);
+  min-height: 1em;
+}
+
+/* Labeled: two lines with the text between them */
+.labeled {
+  display: flex;
+  align-items: center;
+  gap: var(--dt-space-md, 12px);
+  height: auto;
+  background: none;
+}
+
+.labeled::before,
+.labeled::after {
+  content: '';
+  flex: 1;
+  height: var(--dt-border-width-sm, 1px);
+  background: var(--dt-border, #e4e4e7);
+}
+
+.label {
+  font-size: var(--dt-font-size-sm, 12px);
+  line-height: var(--dt-line-height-sm, 18px);
+  color: var(--dt-text-muted, #71717a);
+  white-space: nowrap;
+}

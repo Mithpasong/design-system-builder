@@ -1,0 +1,93 @@
+.root {
+  --_c: var(--dt-primary, #000000);
+  --_track: color-mix(in srgb, var(--dt-text, #18181b) 12%, transparent);
+  --_fill: linear-gradient(to right, var(--_c) var(--_pct, 0%), var(--_track) var(--_pct, 0%));
+
+  display: flex;
+  align-items: center;
+  gap: var(--dt-space-md, 12px);
+  width: 100%;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 20px;
+  margin: 0;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- track ---------- */
+.input::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: var(--dt-radius-full, 9999px);
+  background: var(--_fill);
+}
+
+.input::-moz-range-track {
+  height: 6px;
+  border-radius: var(--dt-radius-full, 9999px);
+  background: var(--_fill);
+}
+
+/* ---------- thumb ---------- */
+.input::-webkit-slider-thumb {
+  width: 18px;
+  height: 18px;
+  margin-top: -6px;
+  appearance: none;
+  border: 2px solid var(--_c);
+  border-radius: 50%;
+  background: var(--dt-surface, #ffffff);
+  box-shadow: var(--dt-shadow-sm, 0 1px 2px rgb(0 0 0 / 0.12));
+  transition: transform var(--dt-duration-fast, 100ms) var(--dt-easing, ease);
+}
+
+.input::-moz-range-thumb {
+  box-sizing: border-box;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--_c);
+  border-radius: 50%;
+  background: var(--dt-surface, #ffffff);
+  box-shadow: var(--dt-shadow-sm, 0 1px 2px rgb(0 0 0 / 0.12));
+  transition: transform var(--dt-duration-fast, 100ms) var(--dt-easing, ease);
+}
+
+.input:active:not(:disabled)::-webkit-slider-thumb {
+  transform: scale(1.15);
+}
+
+.input:active:not(:disabled)::-moz-range-thumb {
+  transform: scale(1.15);
+}
+
+.input:focus-visible {
+  outline: none;
+}
+
+.input:focus-visible::-webkit-slider-thumb {
+  outline: var(--dt-focus-ring-width, 2px) solid var(--dt-focus-ring-color, #3b82f6);
+  outline-offset: var(--dt-focus-ring-offset, 2px);
+}
+
+.input:focus-visible::-moz-range-thumb {
+  outline: var(--dt-focus-ring-width, 2px) solid var(--dt-focus-ring-color, #3b82f6);
+  outline-offset: var(--dt-focus-ring-offset, 2px);
+}
+
+.value {
+  min-width: 3ch;
+  font-size: var(--dt-font-size-sm, 12px);
+  font-weight: var(--dt-font-weight-semibold, 600);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--dt-text, #18181b);
+}

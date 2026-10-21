@@ -1,0 +1,101 @@
+.alert {
+  --_c: var(--dt-info, #0284c7);
+  --_fg: var(--dt-info-foreground, #ffffff);
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--dt-space-md, 12px);
+  padding: var(--dt-space-md, 12px) var(--dt-space-lg, 16px);
+  border: var(--dt-border-width-sm, 1px) solid transparent;
+  border-radius: var(--dt-radius-md, 8px);
+  color: var(--dt-text, #18181b);
+  font-size: var(--dt-font-size-md, 14px);
+  line-height: var(--dt-line-height-md, 21px);
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  /* Center the 20px icon on the first line of text */
+  margin-top: calc((var(--dt-line-height-md, 21px) - 20px) / 2);
+  color: var(--_c);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-weight: var(--dt-font-weight-semibold, 600);
+}
+
+.description {
+  color: var(--dt-text-muted, #71717a);
+}
+
+.title + .description {
+  margin-top: 2px;
+}
+
+.close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin: -2px -6px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--dt-radius-sm, 4px);
+  background: transparent;
+  color: inherit;
+  opacity: 0.6;
+  cursor: pointer;
+  transition-property: opacity, background-color;
+  transition-duration: var(--dt-duration-fast, 100ms);
+  transition-timing-function: var(--dt-easing, ease);
+}
+
+.close:hover {
+  opacity: 1;
+  background: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.close:focus-visible {
+  opacity: 1;
+  outline: var(--dt-focus-ring-width, 2px) solid var(--dt-focus-ring-color, #3b82f6);
+  outline-offset: 0;
+}
+
+.close svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ---------- variant ---------- */
+.soft {
+  border-color: color-mix(in srgb, var(--_c) 30%, transparent);
+  background: color-mix(in srgb, var(--_c) 10%, var(--dt-surface, #ffffff));
+}
+
+.outline {
+  border-color: var(--_c);
+  background: var(--dt-surface, #ffffff);
+}
+
+.solid {
+  background: var(--_c);
+  color: var(--_fg);
+}
+
+.solid .icon,
+.solid .description {
+  color: inherit;
+}
+
+.solid .description {
+  opacity: 0.85;
+}

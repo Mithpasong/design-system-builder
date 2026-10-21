@@ -1,0 +1,94 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--dt-space-lg, 16px);
+}
+
+.list {
+  position: relative;
+  display: flex;
+}
+
+.tab {
+  position: relative;
+  z-index: 1;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-size: var(--dt-font-size-md, 14px);
+  line-height: var(--dt-line-height-md, 21px);
+  font-weight: var(--dt-font-weight-medium, 500);
+  color: var(--dt-text-muted, #71717a);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--dt-duration-fast, 100ms) var(--dt-easing, ease);
+}
+
+.tab:hover:not(:disabled),
+.tab[aria-selected='true'] {
+  color: var(--dt-text, #18181b);
+}
+
+.tab:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tab:focus-visible,
+.panel:focus-visible {
+  outline: var(--dt-focus-ring-width, 2px) solid var(--dt-focus-ring-color, #3b82f6);
+  outline-offset: var(--dt-focus-ring-offset, 2px);
+  border-radius: var(--dt-radius-sm, 4px);
+}
+
+.indicator {
+  position: absolute;
+  transition-property: left, width;
+  transition-duration: var(--dt-duration-normal, 200ms);
+  transition-timing-function: var(--dt-easing, ease);
+}
+
+.panel {
+  color: var(--dt-text, #18181b);
+  font-size: var(--dt-font-size-md, 14px);
+  line-height: var(--dt-line-height-md, 21px);
+}
+
+/* ---------- line ---------- */
+.line .list {
+  gap: var(--dt-space-xl, 24px);
+  border-bottom: var(--dt-border-width-sm, 1px) solid var(--dt-border, #e4e4e7);
+}
+
+.line .tab {
+  padding: var(--dt-space-sm, 8px) 0;
+}
+
+.line .indicator {
+  /* Sit on top of the list's bottom border */
+  bottom: calc(var(--dt-border-width-sm, 1px) * -1);
+  height: var(--dt-border-width-md, 2px);
+  background: var(--dt-primary, #000000);
+}
+
+/* ---------- pill ---------- */
+.pill .list {
+  align-self: flex-start;
+  gap: var(--dt-space-xs, 4px);
+  padding: 4px;
+  border-radius: var(--dt-radius-md, 8px);
+  background: color-mix(in srgb, var(--dt-text, #18181b) 6%, var(--dt-surface, #ffffff));
+}
+
+.pill .tab {
+  padding: 6px var(--dt-space-md, 12px);
+  border-radius: var(--dt-radius-sm, 4px);
+}
+
+.pill .indicator {
+  top: 4px;
+  bottom: 4px;
+  border-radius: var(--dt-radius-sm, 4px);
+  background: var(--dt-surface, #ffffff);
+  box-shadow: var(--dt-shadow-sm, 0 1px 2px rgb(0 0 0 / 0.12));
+}

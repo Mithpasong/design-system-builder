@@ -1,0 +1,36 @@
+.root {
+  position: relative;
+  display: block;
+}
+
+.select {
+  appearance: none;
+  /* Room for the chevron */
+  padding-right: calc(var(--dt-space-sm, 8px) + 24px);
+  cursor: pointer;
+}
+
+.select:invalid,
+.select:has(option[value='']:checked) {
+  color: var(--dt-text-muted, #71717a);
+}
+
+.select option {
+  color: var(--dt-text, #18181b);
+  background: var(--dt-surface, #ffffff);
+}
+
+.chevron {
+  position: absolute;
+  top: 50%;
+  right: var(--dt-space-md, 12px);
+  width: 16px;
+  height: 16px;
+  transform: translateY(-50%);
+  fill: none;
+  stroke: var(--dt-text-muted, #71717a);
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}

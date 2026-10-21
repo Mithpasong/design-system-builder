@@ -1,0 +1,54 @@
+.link {
+  --_c: var(--dt-primary, #000000);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  border-radius: var(--dt-radius-sm, 4px);
+  color: var(--_c);
+  font-weight: var(--dt-font-weight-medium, 500);
+  text-decoration-thickness: var(--dt-border-width-sm, 1px);
+  text-underline-offset: 3px;
+  transition-property: color, text-decoration-color;
+  transition-duration: var(--dt-duration-fast, 100ms);
+  transition-timing-function: var(--dt-easing, ease);
+  cursor: pointer;
+}
+
+.inherit {
+  color: inherit;
+}
+
+.hover {
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+}
+
+.hover:hover,
+.always {
+  text-decoration-line: underline;
+  text-decoration-color: currentColor;
+}
+
+.link:hover {
+  color: color-mix(in srgb, var(--_c) 80%, var(--dt-text, #18181b));
+}
+
+.inherit:hover {
+  color: inherit;
+}
+
+.link:focus-visible {
+  outline: var(--dt-focus-ring-width, 2px) solid var(--dt-focus-ring-color, #3b82f6);
+  outline-offset: var(--dt-focus-ring-offset, 2px);
+}
+
+.icon {
+  width: 0.85em;
+  height: 0.85em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

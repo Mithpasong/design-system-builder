@@ -1,0 +1,140 @@
+.root {
+  --_c: var(--dt-primary, #000000);
+  --_fg: var(--dt-primary-foreground, #ffffff);
+  --_border: color-mix(in srgb, var(--dt-text, #18181b) 30%, var(--dt-border, #e4e4e7));
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--dt-space-sm, 8px);
+  color: var(--dt-text, #18181b);
+  font-size: var(--dt-font-size-md, 14px);
+  line-height: var(--dt-line-height-md, 21px);
+  cursor: pointer;
+}
+
+.root:has(.input:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Native input stays in the DOM for keyboard and screen readers, but is invisible */
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.input:focus-visible + .box,
+.input:focus-visible + .track {
+  outline: var(--dt-focus-ring-width, 2px) solid var(--dt-focus-ring-color, #3b82f6);
+  outline-offset: var(--dt-focus-ring-offset, 2px);
+}
+
+/* ---------- checkbox ---------- */
+.box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: var(--dt-border-width-sm, 1px) solid var(--_border);
+  border-radius: var(--dt-radius-sm, 4px);
+  background: var(--dt-surface, #ffffff);
+  color: var(--_fg);
+  transition-property: background-color, border-color;
+  transition-duration: var(--dt-duration-fast, 100ms);
+  transition-timing-function: var(--dt-easing, ease);
+}
+
+.box svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transform: scale(0.6);
+  transition-property: opacity, transform;
+  transition-duration: var(--dt-duration-fast, 100ms);
+  transition-timing-function: var(--dt-easing, ease);
+}
+
+.root:hover .input:not(:disabled):not(:checked) + .box {
+  border-color: var(--_c);
+}
+
+.input:checked + .box {
+  border-color: var(--_c);
+  background: var(--_c);
+}
+
+.input:checked + .box svg {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- radio ---------- */
+.radio {
+  border-radius: 50%;
+}
+
+.radio::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--_fg);
+  transform: scale(0);
+  transition: transform var(--dt-duration-fast, 100ms) var(--dt-easing, ease);
+}
+
+.input:checked + .radio::after {
+  transform: scale(1);
+}
+
+/* ---------- switch ---------- */
+.track {
+  position: relative;
+  flex-shrink: 0;
+  width: 36px;
+  height: 20px;
+  border-radius: var(--dt-radius-full, 9999px);
+  background: color-mix(in srgb, var(--dt-text, #18181b) 20%, transparent);
+  transition: background-color var(--dt-duration-normal, 200ms) var(--dt-easing, ease);
+}
+
+.track::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: var(--dt-shadow-sm, 0 1px 2px rgb(0 0 0 / 0.12));
+  transition-property: transform, background-color;
+  transition-duration: var(--dt-duration-normal, 200ms);
+  transition-timing-function: var(--dt-easing, ease);
+}
+
+.input:checked + .track {
+  background: var(--_c);
+}
+
+/* Thumb uses the accent's foreground so it stays visible on light accents (e.g. white primary in dark mode) */
+.input:checked + .track::after {
+  background: var(--_fg);
+  transform: translateX(16px);
+}
+
+.label {
+  user-select: none;
+}

@@ -1,0 +1,79 @@
+.field {
+  width: 100%;
+  min-width: 0;
+  border: var(--dt-border-width-sm, 1px) solid var(--dt-border, #e4e4e7);
+  border-radius: var(--dt-radius-md, 8px);
+  background: var(--dt-surface, #ffffff);
+  color: var(--dt-text, #18181b);
+  font: inherit;
+  transition-property: border-color;
+  transition-duration: var(--dt-duration-fast, 100ms);
+  transition-timing-function: var(--dt-easing, ease);
+}
+
+.field::placeholder {
+  color: var(--dt-text-muted, #71717a);
+}
+
+.field:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--dt-text, #18181b) 35%, var(--dt-border, #e4e4e7));
+}
+
+.field:focus-visible {
+  outline: var(--dt-focus-ring-width, 2px) solid var(--dt-focus-ring-color, #3b82f6);
+  outline-offset: var(--dt-focus-ring-offset, 2px);
+}
+
+.field:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.invalid,
+.invalid:hover:not(:disabled) {
+  border-color: var(--dt-danger, #dc2626);
+}
+
+.invalid:focus-visible {
+  outline-color: var(--dt-danger, #dc2626);
+}
+
+/* ---------- size (same scale as Button) ---------- */
+.size-xs {
+  height: var(--dt-size-xs-height, 24px);
+  padding: 0 var(--dt-size-xs-padding-x, 8px);
+  font-size: var(--dt-font-size-xs, 10px);
+}
+
+.size-sm {
+  height: var(--dt-size-sm-height, 32px);
+  padding: 0 var(--dt-size-sm-padding-x, 12px);
+  font-size: var(--dt-font-size-sm, 12px);
+}
+
+.size-md {
+  height: var(--dt-size-md-height, 40px);
+  padding: 0 var(--dt-size-md-padding-x, 16px);
+  font-size: var(--dt-font-size-md, 14px);
+}
+
+.size-lg {
+  height: var(--dt-size-lg-height, 48px);
+  padding: 0 var(--dt-size-lg-padding-x, 20px);
+  font-size: var(--dt-font-size-lg, 17px);
+}
+
+.size-xl {
+  height: var(--dt-size-xl-height, 56px);
+  padding: 0 var(--dt-size-xl-padding-x, 24px);
+  font-size: var(--dt-font-size-xl, 20px);
+}
+
+/* ---------- textarea ---------- */
+.textarea {
+  display: block;
+  padding: var(--dt-space-sm, 8px) var(--dt-size-md-padding-x, 16px);
+  font-size: var(--dt-font-size-md, 14px);
+  line-height: var(--dt-line-height-md, 21px);
+  resize: vertical;
+}

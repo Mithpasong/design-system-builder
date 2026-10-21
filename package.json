@@ -1,0 +1,13 @@
+{
+  "name": "design-system-builder",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w docs",
+    "build": "npm run build -w docs",
+    "preview": "npm run preview -w docs"
+  }
+}

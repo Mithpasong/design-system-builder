@@ -1,0 +1,138 @@
+.stepper {
+  --_marker: 28px;
+  --_line: var(--dt-border-width-md, 2px);
+
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--dt-text, #18181b);
+}
+
+.step {
+  position: relative;
+  display: flex;
+  gap: var(--dt-space-md, 12px);
+}
+
+.marker {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--_marker);
+  height: var(--_marker);
+  border: var(--_line) solid var(--dt-border, #e4e4e7);
+  border-radius: 50%;
+  background: var(--dt-surface, #ffffff);
+  font-size: var(--dt-font-size-sm, 12px);
+  font-weight: var(--dt-font-weight-semibold, 600);
+  color: var(--dt-text-muted, #71717a);
+  transition-property: background-color, border-color, color;
+  transition-duration: var(--dt-duration-normal, 200ms);
+  transition-timing-function: var(--dt-easing, ease);
+}
+
+.marker svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.active .marker {
+  border-color: var(--dt-primary, #000000);
+  color: var(--dt-primary, #000000);
+}
+
+.complete .marker {
+  border-color: var(--dt-primary, #000000);
+  background: var(--dt-primary, #000000);
+  color: var(--dt-primary-foreground, #ffffff);
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  padding-top: calc((var(--_marker) - var(--dt-line-height-md, 21px)) / 2);
+}
+
+.label {
+  font-size: var(--dt-font-size-md, 14px);
+  line-height: var(--dt-line-height-md, 21px);
+  font-weight: var(--dt-font-weight-semibold, 600);
+}
+
+.upcoming .label {
+  color: var(--dt-text-muted, #71717a);
+}
+
+.description {
+  font-size: var(--dt-font-size-sm, 12px);
+  line-height: var(--dt-line-height-sm, 18px);
+  color: var(--dt-text-muted, #71717a);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- connector line ---------- */
+.step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  background: var(--dt-border, #e4e4e7);
+  transition: background-color var(--dt-duration-normal, 200ms) var(--dt-easing, ease);
+}
+
+.complete:not(:last-child)::after {
+  background: var(--dt-primary, #000000);
+}
+
+/* Horizontal: steps share the width, line runs from marker to the next step */
+.horizontal .step {
+  flex: 1;
+}
+
+.horizontal .step:last-child {
+  flex: 0 0 auto;
+}
+
+.horizontal .step:not(:last-child) {
+  padding-right: var(--dt-space-md, 12px);
+}
+
+.horizontal .step:not(:last-child)::after {
+  position: static;
+  flex: 1;
+  align-self: flex-start;
+  min-width: var(--dt-space-lg, 16px);
+  height: var(--_line);
+  margin-top: calc((var(--_marker) - var(--_line)) / 2);
+}
+
+/* Vertical: line runs down from the marker to the next one */
+.vertical {
+  flex-direction: column;
+}
+
+.vertical .step:not(:last-child) {
+  padding-bottom: var(--dt-space-xl, 24px);
+}
+
+.vertical .step:not(:last-child)::after {
+  top: var(--_marker);
+  bottom: 0;
+  left: calc((var(--_marker) - var(--_line)) / 2);
+  width: var(--_line);
+}
